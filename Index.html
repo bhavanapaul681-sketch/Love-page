@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Favorite Person ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #dce9ff;
+  color: #743b63;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  background: #fff5fa;
+  border: 2px solid #f4b9d2;
+  border-radius: 25px;
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 35px #9b8cb866;
+  animation: appear 0.7s ease;
+}
+
+h1 {
+  color: #d64f91;
+  font-size: 29px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+button {
+  border: none;
+  background: #e96ca5;
+  color: white;
+  padding: 13px 23px;
+  margin: 8px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #c94c88;
+}
+
+.heart {
+  font-size: 65px;
+  animation: beat 1s infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.2); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<section id="page1">
+<div class="heart">💗</div>
+<h1>Happy Boyfriend Day!</h1>
+<p>I made a little something just for you...</p>
+<button onclick="nextPage(2)">Open My Heart ❤️</button>
+</section>
+
+<section id="page2" class="hidden">
+<h1>This or That? 💕</h1>
+<p>What would you choose?</p>
+<button onclick="answer('A long walk together 🌷')">Long walks 🌷</button>
+<button onclick="answer('A cozy movie night 🍿')">Movie nights 🍿</button>
+<p id="answer"></p>
+<button onclick="nextPage(3)">Next →</button>
+</section>
+
+<section id="page3" class="hidden">
+<h1>Why I Love You 💌</h1>
+<p id="reason">Your smile makes ordinary days special.</p>
+<button onclick="changeReason()">Tell Me More 💗</button>
+<button onclick="nextPage(4)">Next →</button>
+</section>
+
+<section id="page4" class="hidden">
+<h1>Win My Heart ❤️</h1>
+<p>Tap the heart 5 times to unlock a surprise!</p>
+<div class="heart" onclick="tapHeart()">❤️</div>
+<p id="count">Hearts: 0 / 5</p>
+<p id="surprise"></p>
+<button onclick="nextPage(5)">Continue →</button>
+</section>
+
+<section id="page5" class="hidden">
+<div class="heart">💖</div>
+<h1>You Have My Heart!</h1>
+<p>You are one of my favorite parts of life.</p>
+<p>Thank you for being you. 🥹💕</p>
+<button onclick="nextPage(1)">Start Again ↻</button>
+</section>
+
+</div>
+
+<script>
+function nextPage(number) {
+  document.querySelectorAll("section").forEach(function(page) {
+    page.classList.add("hidden");
+  });
+  document.getElementById("page" + number).classList.remove("hidden");
+}
+
+function answer(choice) {
+  document.getElementById("answer").innerText =
+    "Aww! " + choice + " sounds lovely! 💕";
+}
+
+let reasons = [
+  "Your smile makes ordinary days special. 💗",
+  "You make me laugh even on difficult days. 🌷",
+  "I appreciate all the little things you do. 💌",
+  "Being myself around you feels wonderful. 🥰",
+  "You make beautiful memories with me. ❤️"
+];
+
+let index = 0;
+
+function changeReason() {
+  index = (index + 1) % reasons.length;
+  document.getElementById("reason").innerText = reasons[index];
+}
+
+let count = 0;
+
+function tapHeart() {
+  if (count < 5) count++;
+  document.getElementById("count").innerText =
+    "Hearts: " + count + " / 5";
+
+  if (count === 5) {
+    document.getElementById("surprise").innerText =
+      "Surprise! You unlocked all my love! 💖🎉";
+  }
+}
+</script>
+
+</body>
+                                               </html>
